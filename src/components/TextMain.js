@@ -29,7 +29,7 @@ export default function TextMain(props){
         
         <>
       
-      <div class="mb-3">
+      <div className="mb-3">
         <h2 style={{color : props.mode === 'light' ? 'black' : 'white'}}>Enter the text to analyze below</h2>
          <textarea className={`form-control bg-${props.textAreaBg}`} onChange={handleOnChange} style={{color : props.mode === 'light' ? 'black' : 'white'}} id="exampleFormControlTextarea1" value={text}  placeholder='Enter the Text here' rows="7"></textarea>
       </div>
@@ -41,8 +41,8 @@ export default function TextMain(props){
             <button className={`btn btn-${props.mode === "success" ? 'success' : 'primary'} my-2 mx-2`} onClick={handleToClear} >Clear</button>
         </div>
         <div className="container my-4" style={{color : props.mode === 'light' ? 'black' : 'white'}}>
-            <p>{text.length === 0 ? 0 : text.split(" ").length} words {text.length} characters</p>
-            <p>{0.008 * text.split(" ").length} read minutes</p>
+            <p>{text.split(" ").filter((element)=>{return element.length !== 0}).length} words {text.length} characters</p>
+            <p>{0.008 * text.split(" ").filter((element)=>{return element.length !== 0}).length} read minutes</p>
             <h4>Preview your text</h4>
             <p>{text}</p>
         </div>
